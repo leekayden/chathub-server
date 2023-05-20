@@ -25,7 +25,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () =>
+const server = app.listen(process.env.PORT || 3003, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
 const io = socket(server, {
