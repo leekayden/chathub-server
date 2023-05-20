@@ -5,7 +5,10 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
+const morgan = require("morgan");
 require("dotenv").config();
+
+const port = process.env.PORT || 3003;
 
 app.use(cors());
 app.use(express.json());
@@ -22,15 +25,17 @@ mongoose
     console.log(err.message);
   });
 
-app.use("/api/auth", authRoutes);
-app.use("/api/messages", messageRoutes);
 app.get("/", (req, res) => {
   res.send("Server");
 });
 
-const server = app.listen(process.env.PORT || 5000, () =>
-  console.log(`Server started on ${process.env.PORT}`)
-);
+app.use(morgan("combined"));
+app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
+
+const server = app.listen(port, () => {
+  console.log(`Listening on ${port}`);
+});
 const io = socket(server, {
   cors: {
     origin: "*",
