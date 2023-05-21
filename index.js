@@ -8,7 +8,7 @@ const socket = require("socket.io");
 const morgan = require("morgan");
 require("dotenv").config();
 
-const port = process.env.PORT || 3006;
+const port = process.env.PORT || 5000;
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017/chat"
 
 app.use(cors());
