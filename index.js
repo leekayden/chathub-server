@@ -36,6 +36,7 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
+
 const io = socket(server, {
   cors: {
     origin: "*",
