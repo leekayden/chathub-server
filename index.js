@@ -27,7 +27,7 @@ mongoose
   });
 
 app.get("/", (req, res) => {
-  res.send("Server");
+  res.send("chathub server");
 });
 
 app.use(morgan("combined"));
